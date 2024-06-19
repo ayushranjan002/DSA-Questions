@@ -32,3 +32,13 @@ public:
         return sqrtInteger(x);
     }
 };
+//method without binary search 
+//time complexity o(root n)
+int sqrtM1(int x){
+	int i=1,result=1;
+	while(result<=x){
+		i++;
+		result=i*i;
+	}
+	return i-1;
+}

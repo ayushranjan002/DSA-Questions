@@ -1,17 +1,18 @@
-
-class Solution{
-	public:
-		int reverse(int x){
-			int ans=0;
-			int digit;
-			while(x!=0){
-				digit=x%10;
-				if( (ans>INT_MAX/10) || (ans<INT_MIN/10)){
-					return 0;
-				}
-				ans=ans*10+digit;
-				x=x/10;
-			}
-			return ans;
-		}
+class Solution {
+public:
+    int subtractProductAndSum(int n) {
+        
+        int sum = 0;
+        int product = 1;
+        
+        while (n != 0) {
+           int  rem = n % 10;
+            n = n / 10;
+            sum = sum + rem;
+            product = product * rem;
+        }
+        
+       int result = product - sum;
+        return result;
+    }
 };

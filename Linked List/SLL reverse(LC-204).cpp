@@ -26,3 +26,25 @@ public:
         return prev;
     }
 };
+
+
+<================ RECURSION ===================>
+void reverse(ListNode** head, ListNode* curr, ListNode* prev){
+    if(curr == nullptr){
+        *head = prev;
+        return;
+    }
+    ListNode* forward = curr->next;
+    reverse(head, forward, curr);
+    curr->next = prev;
+}
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        reverse(&head, curr, prev);
+        return head;
+    }
+};

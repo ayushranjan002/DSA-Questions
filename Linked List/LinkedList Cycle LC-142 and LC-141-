@@ -1,0 +1,30 @@
+class Solution {
+public:
+    ListNode* detectCycle(ListNode* head) {
+        if (head == NULL || head->next == NULL)
+            return NULL;
+
+        ListNode* slow = head;
+        ListNode* fast = head;
+        ListNode* temp = head;
+
+        // Move slow by 1 step and fast by 2 steps
+        while (fast->next && fast->next->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+
+            // Cycle detected
+            if (slow == fast) {
+                // Move temp and slow one step at a time to find the start of the cycle
+                while (slow != temp) {
+                    slow = slow->next;
+                    temp = temp->next;
+                }
+                return slow;  // The start of the cycle
+            }
+        }
+
+        // No cycle detected
+        return NULL;
+    }
+};

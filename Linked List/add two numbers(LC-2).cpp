@@ -20,7 +20,7 @@ public:
         ListNode* ansTail = nullptr;
         
         while (l1 != nullptr || l2 != nullptr || carry != 0) {
-            int val1 = (l1 != nullptr) ? l1->val : 0;
+            int val1 = (l1 != nullptr) ? l1->val : 0;//tertiary operator
             int val2 = (l2 != nullptr) ? l2->val : 0;
             
             int sum = carry + val1 + val2;

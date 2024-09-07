@@ -8,6 +8,53 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* modifiedList(vector<int>& nums, ListNode* head) {
+        if (!head) return nullptr; // If the list is empty, return nullptr
+        
+        // Convert nums vector into a set for O(1) lookup time
+        unordered_set<int> numSet(nums.begin(), nums.end());
+        
+        // Use dummy node to handle deletion of head node easily
+        ListNode* dummy = new ListNode(-1);
+        dummy->next = head;
+        
+        ListNode* prev = dummy;
+        ListNode* current = head;
+        
+        while (current != nullptr) {
+            if (numSet.count(current->val)) {
+                // Node needs to be deleted
+                prev->next = current->next;
+                delete current;  // Free memory
+                current = prev->next;  // Move to the next node
+            } else {
+                // Move both prev and current forward
+                prev = current;
+                current = current->next;
+            }
+        }
+        
+        // Get the new head and delete the dummy node
+        head = dummy->next;
+        delete dummy;
+        
+        return head;
+    }
+};
+
+//brute force
 class Solution {
 public:
     // Function to delete the node and return the new head of the list

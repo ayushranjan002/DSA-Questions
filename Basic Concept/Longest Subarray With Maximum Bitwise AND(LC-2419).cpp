@@ -1,3 +1,4 @@
+//39 min brute + optimized
 // optimized approach
 class Solution {
 public:

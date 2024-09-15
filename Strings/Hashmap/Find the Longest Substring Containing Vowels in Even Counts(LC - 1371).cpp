@@ -1,3 +1,14 @@
+/*Can we achieve O(1) space?
+No, reducing this algorithm to strict O(1) space is not possible while maintaining the logic for bitmask
+tracking without sacrificing correctness or performance. The reason is that we need to remember past positions
+of masks to calculate the maximum length of valid substrings. Removing the map would mean losing track of where
+each state (mask) was first encountered.
+
+Alternative Approaches:
+There is no known method that can reduce the space complexity to constant O(1) while preserving the efficiency and
+correctness of the algorithm. The current approach with O(n) space is optimal for this type of problem due to the
+need to store intermediate results for each mask state
+*/
 class Solution {
 public:
     int findTheLongestSubstring(string s) {

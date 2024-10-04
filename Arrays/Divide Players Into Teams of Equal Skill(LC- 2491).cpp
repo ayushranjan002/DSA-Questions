@@ -1,3 +1,8 @@
+/*Approach
+Sort the array: Sorting the skills helps in easily forming valid pairs.
+Two-pointer approach: Use two pointers—one from the start and one from the end—to pair players. Each pair must have the same total skill.
+Check for consistency: If any pair's skill sum differs from the others, return -1.
+Calculate chemistry: For valid pairs, calculate the chemistry as the product of the players' skills.*/
 class Solution {
 public:
     long long dividePlayers(vector<int>& skill) {

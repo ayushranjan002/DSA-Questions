@@ -1,3 +1,4 @@
+//Make 2 maps, iterate them, compare 
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {

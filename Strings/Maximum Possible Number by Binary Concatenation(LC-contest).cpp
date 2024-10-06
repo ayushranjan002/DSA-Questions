@@ -39,15 +39,16 @@ nums.length == 3
 
 CODE:
 */
+
 class Solution {
 public:
-    int maxGoodNumber(std::vector<int>& nums) {
-        std::vector<std::string> binaryStrings;
+    int maxGoodNumber(vector<int>& nums) {
+        vector<string> binaryStrings;
 
         // Convert each number to its binary representation (without leading zeros)
         for (int num : nums) {
             if (num > 0) {
-                std::string binary = std::bitset<32>(num).to_string(); // Get 32-bit binary representation
+                string binary = std::bitset<32>(num).to_string(); // Get 32-bit binary representation
                 binaryStrings.push_back(binary.substr(binary.find('1'))); // Remove leading zeros
             } else if (num == 0) {
                 binaryStrings.push_back("0");
@@ -55,13 +56,13 @@ public:
         }
 
         // Sort binary strings in a way to maximize the result when concatenated
-        std::sort(binaryStrings.begin(), binaryStrings.end(), [](const std::string& a, const std::string& b) {
+        sort(binaryStrings.begin(), binaryStrings.end(), [](const string& a, const string& b) {
             return a + b > b + a;
         });
 
         // Concatenate the sorted binary strings
-        std::string result;
-        for (const std::string& binary : binaryStrings) {
+        string result;
+        for (const string& binary : binaryStrings) {
             result += binary;
         }
 

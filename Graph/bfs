@@ -1,0 +1,33 @@
+vector<int> bfsTraversal(int n, vector<vector<int>> &adj) {
+    vector<int> ans;
+    unordered_map<int, bool> visited;
+
+    for (int i = 0; i < adj.size(); i++) {
+        visited[i] = false;
+    }
+
+    queue<int> q;
+
+    for (int i = 0; i < n; i++) {
+        if (!visited[i]) {
+            q.push(i);
+            visited[i] = true;
+
+            while (!q.empty()) {
+                int frontnode = q.front();
+                q.pop();
+
+                ans.push_back(frontnode);
+
+                for (auto neighbor : adj[frontnode]) {
+                    if (!visited[neighbor]) {
+                        q.push(neighbor);
+                        visited[neighbor] = true;
+                    }
+                }
+            }
+        }
+    }
+
+    return ans;
+}
